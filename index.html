@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Countdown Timer</title>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-950 via-fuchsia-900 to-pink-800">
+
+    <!-- Countdown Card -->
+    <div class="w-[430px] rounded-[30px] bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl p-8 text-center">
+
+        <!-- Icon -->
+        <div class="w-[90px] h-[90px] mx-auto mb-6 rounded-full bg-gradient-to-r from-pink-400 to-purple-500 flex items-center justify-center text-[45px] shadow-xl">
+            ⏳
+        </div>
+
+        <!-- Heading -->
+        <h1 class="text-white text-[32px] font-bold">
+            Countdown Timer
+        </h1>
+
+        <p class="text-gray-200 mt-2 mb-6">
+            Press the button to begin the 60-second countdown.
+        </p>
+
+        <!-- Timer Display -->
+        <div class="bg-black/40 border border-pink-400/40 rounded-[20px] py-6 mb-7 shadow-inner">
+
+            <h2 id="timer1"
+                class="text-[70px] font-extrabold text-pink-300 tracking-[6px] font-mono drop-shadow-lg">
+                60
+            </h2>
+
+        </div>
+
+        <!-- Button -->
+        <button
+            onclick="startTimer()"
+            class="w-full py-4 rounded-[18px] bg-gradient-to-r from-pink-500 to-purple-600 text-white text-[18px] font-bold shadow-lg hover:scale-105 hover:shadow-pink-500/50 duration-300 active:scale-95">
+
+            Start Countdown
+
+        </button>
+
+    </div>
+
+    <script>
+        let count = 60;
+        let interval;
+
+        function startTimer() {
+
+            if (interval) return;
+
+            document.getElementById("timer1").innerHTML = count;
+
+            interval = setInterval(function () {
+
+                count--;
+                document.getElementById("timer1").innerHTML = count;
+
+                if (count == 0) {
+                    clearInterval(interval);
+                }
+
+            }, 1000);
+
+        }
+    </script>
+
+</body>
+</html>
